@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Select Category</h5>
+                      <small class="text-muted float-end">Enter Package Name</small>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'updatepack' dataid=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <select id="largeSelect" class="form-select form-select-lg" name="cname">
+                                <option>{{data.categoryname}}</option>
+                              {% for i in cat %}
+                                    <option>{{i.categoryname}}</option>
+                              {% endfor %}
+                        </select>
+                        </div>
+                            <div class="mb-3">
+                          <label class="form-label" for="basic-default-fullname">Enter Package Name Here...</label>
+                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="Enter Package Name" name="pname" value="{{data.packagename}}">
+                        </div>
+                             <div class="mb-3">
+                        <label for="formFile" class="form-label"></label>
+                                 <img src="{{data.Packageimage.url}}" width="100px" height="100px">
+                                 <input class="form-control" type="file" id="formFile" name="image">
+                      </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}', '', 'warning');
+            </script>
+        {% elif i.tags == 'error' %}
+             <script>
+                swal('{{i}}', '', 'error');
+            </script>
+        {% elif i.tags == 'success' %}
+             <script>
+                swal('{{i}}', '', 'success');
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}', '', 'info');
+             </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

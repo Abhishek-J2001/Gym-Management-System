@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Gym Template">
+    <meta name="keywords" content="Gym, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gym | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="fa fa-close"></i>
+        </div>
+        <div class="canvas-search search-switch">
+            <i class="fa fa-search"></i>
+        </div>
+        <nav class="canvas-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'aboutpage' %}">About Us</a></li>
+                <li><a href="{% url 'classpage' %}">Classes</a></li>
+                <li><a href="{% url 'servicepage' %}">Services</a></li>
+                <li><a href="{% url 'teampage' %}">Our Team</a></li>
+                <li><a href="{% url 'blogpage' %}">Blog</a></li>
+<!--                    <ul class="dropdown">-->
+<!--                        <li><a href="{% url 'aboutpage' %}">About us</a></li>-->
+<!--                        <li><a href="./class-timetable.html">Classes timetable</a></li>-->
+<!--                        <li><a href="./bmi-calculator.html">Bmi calculate</a></li>-->
+<!--                        <li><a href="./team.html">Our team</a></li>-->
+<!--                        <li><a href="./gallery.html">Gallery</a></li>-->
+<!--                        <li><a href="./blog.html">Our blog</a></li>-->
+<!--                        <li><a href="./404.html">404</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <li><a href="{% url 'contactpage' %}">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="canvas-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube-play"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li><a href="{% url 'aboutpage' %}">About Us</a></li>
+                            <li><a href="{% url 'classpage' %}">Classes</a></li>
+                            <li><a href="{% url 'servicepage' %}">Services</a></li>
+                            <li><a href="{% url 'teampage' %}">Our Team</a></li>
+                            <li><a href="{% url 'contactpage' %}">Contact</a></li>
+
+<!--                                <ul class="dropdown">-->
+<!--                                    <li><a href="{% url 'aboutpage' %}">About us</a></li>-->
+<!--                                    <li><a href="./class-timetable.html">Classes timetable</a></li>-->
+<!--                                    <li><a href="./bmi-calculator.html">Bmi calculate</a></li>-->
+<!--                                    <li><a href="./team.html">Our team</a></li>-->
+<!--                                    <li><a href="./gallery.html">Gallery</a></li>-->
+<!--                                    <li><a href="./blog.html">Our blog</a></li>-->
+<!--                                    <li><a href="./404.html">404</a></li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+                            <li class="active"><a href="">Settings</a>
+                            <ul class="dropdown">
+                                <li class="active"><a href="{% url 'blogpage' %}">Blogs</a>
+                            </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="top-option">
+<!--                        <div class="to-search search-switch">-->
+<!--                            <i class="fa fa-search"></i>-->
+<!--                        </div>-->
+                        <div class="container">
+                            <ul class="header-links pull-right">
+						{% if request.session.Username %}
+						<li><a href="{% url 'user_logout' %}"><i class="fa fa-user-o"></i>Welcome {{request.session.Username}} / Logout</a></li>
+						{% else %}
+						<li><a href="{% url 'regpage' %}"><i class="fa fa-user-o"></i> LOGIN/REGISTER </a></li>
+						{% endif %}
+					</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Blog Details Hero Section Begin -->
+    <section class="blog-details-hero set-bg" data-setbg="{% static 'img/blog/details/details-hero.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 p-0 m-auto">
+                    <div class="bh-text">
+                        <h3>Workout nutrition explained. What to eat before, during, and after exercise.</h3>
+                        <ul>
+                            <li>by Admin</li>
+                            <li>Aug,15, 2019</li>
+                            <li>20 Comment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Hero Section End -->
+
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 p-0 m-auto">
+                    <div class="blog-details-text">
+                        <div class="blog-details-title">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua accusantium doloremque laudantium. Excepteur
+                                sint occaecat cupidatat non proident sculpa .</p>
+                            <p>laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit
+                                amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat anim id est laborum.</p>
+                            <h5>You Can Buy For Less Than A College Degree</h5>
+                            <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur officia deserunt mollit.
+                            </p>
+                        </div>
+                        <div class="blog-details-pic">
+                            <div class="blog-details-pic-item">
+                                <img src="{% static 'img/blog/details/details-1.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-details-pic-item">
+                                <img src="{% static 'img/blog/details/details-2.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="blog-details-desc">
+                            <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                        <div class="blog-details-quote">
+                            <div class="quote-icon">
+                                <img src="{% static 'img/blog/details/quote-left.png' %}" alt="">
+                            </div>
+                            <h5>The whole family of tiny legumes, whether red, green, yellow, or black, offers so many
+                                possibilities to create an exciting lunch.</h5>
+                            <span>MEIKE PETERS</span>
+                        </div>
+                        <div class="blog-details-more-desc">
+                            <p>For to come to the smallest detail, no one should practice any kind of work except as some of it
+                                good luck Doubts or irure pain in rebuke in pleasure wants to be a hair
+                                let him run away from the pain, and there will be no breeding. Unless they are blinded by lust, they do not come out, they are
+                                in. . But that you may see whence all this born error is pleasure.</p>
+                            <p>Of labor, except that some of it may benefit. It is a very difficult thing to do
+                                it will be followed by the adipiscing of the employer, but in the same way the incidence of labor will be reduced
+                                some advantage. The class is apt to be silent, and the companions turn to the shores by marriage
+                                ours, by means of hymenaean projects. A large or large ex. The whole pregnant tincidunt layer.
+                                There is no such thing as a matter of fact.</p>
+                        </div>
+                        <div class="blog-details-tag-share">
+                            <div class="tags">
+                                <a href="#">Body buiding</a>
+                                <a href="#">Yoga</a>
+                                <a href="#">Weightloss</a>
+                                <a href="#">Streching</a>
+                            </div>
+                            <div class="share">
+                                <span>Share</span>
+                                <a href="#"><i class="fa fa-facebook"></i> 82</a>
+                                <a href="#"><i class="fa fa-twitter"></i> 24</a>
+                                <a href="#"><i class="fa fa-envelope"></i> 08</a>
+                            </div>
+                        </div>
+                        <div class="blog-details-author">
+                            <div class="ba-pic">
+                                <img src="{% static 'img/blog/details/blog-profile.jpg' %}" alt="">
+                            </div>
+                            <div class="ba-text">
+                                <h5>Lena Mollein.</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation.</p>
+                                <div class="bp-social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="comment-option">
+                                    <h5 class="co-title">Comment</h5>
+                                    <div class="co-item">
+                                        <div class="co-widget">
+                                            <a href="#"><i class="fa fa-heart-o"></i></a>
+                                            <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                        </div>
+                                        <div class="co-pic">
+                                            <img src="{% static 'img/blog/details/comment-1.jpg' %}" alt="">
+                                            <h5>Brandon Kelley</h5>
+                                        </div>
+                                        <div class="co-text">
+                                            <p>Nor is there any one who loves pain, pain itself,
+                                                He wants to gain pain.</p>
+                                        </div>
+                                    </div>
+                                    <div class="co-item reply-comment">
+                                        <div class="co-widget">
+                                            <a href="#"><i class="fa fa-heart-o"></i></a>
+                                            <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                        </div>
+                                        <div class="co-pic">
+                                            <img src="{% static 'img/blog/details/comment-2.jpg' %}" alt="">
+                                            <h5>Brandon Kelley</h5>
+                                        </div>
+                                        <div class="co-text">
+                                            <p>Nor is there any one who loves pain, pain itself,
+                                                He wants to gain pain.</p>
+                                        </div>
+                                    </div>
+                                    <div class="co-item">
+                                        <div class="co-widget">
+                                            <a href="#"><i class="fa fa-heart-o"></i></a>
+                                            <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                        </div>
+                                        <div class="co-pic">
+                                            <img src="{% static 'img/blog/details/comment-3.jpg' %}" alt="">
+                                            <h5>Brandon Kelley</h5>
+                                        </div>
+                                        <div class="co-text">
+                                            <p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="leave-comment">
+                                    <h5>Leave a comment</h5>
+                                    <form method="post" action="{% url 'blogdata' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                        <input type="text" placeholder="Name" name="name">
+                                        <input type="text" placeholder="Email" name="email">
+                                        <input type="text" placeholder="Mobile Number" name="mobile">
+                                        <textarea placeholder="Comment" name="comment"></textarea>
+                                        <button type="submit" >Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+
+    <!-- Get In Touch Section Begin -->
+    <div class="gettouch-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="gt-text">
+                        <i class="fa fa-map-marker"></i>
+                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="gt-text">
+                        <i class="fa fa-mobile"></i>
+                        <ul>
+                            <li>125-711-811</li>
+                            <li>125-668-886</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="gt-text email">
+                        <i class="fa fa-envelope"></i>
+                        <p>Support.gymcenter@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Get In Touch Section End -->
+
+    <!-- Get In Touch Section Begin -->
+<!--    <div class="gettouch-section">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="gt-text">-->
+<!--                        <i class="fa fa-map-marker"></i>-->
+<!--                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="gt-text">-->
+<!--                        <i class="fa fa-mobile"></i>-->
+<!--                        <ul>-->
+<!--                            <li>125-711-811</li>-->
+<!--                            <li>125-668-886</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="gt-text email">-->
+<!--                        <i class="fa fa-envelope"></i>-->
+<!--                        <p>Support.gymcenter@gmail.com</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Get In Touch Section End -->
+
+    <!-- Footer Section Begin -->
+    <section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="fs-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="fs-widget">
+                        <h4>Useful links</h4>
+                        <ul>
+                            <li><a href="{% url 'aboutpage' %}">About</a></li>
+                            <li><a href="{% url 'blogpage' %}">Blog</a></li>
+                            <li><a href="{% url 'classpage' %}">Classes</a></li>
+                            <li><a href="{% url 'contactpage' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="fs-widget">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">My account</a></li>
+                            <li><a href="#">Subscribe</a></li>
+                            <li><a href="{% url 'contactpage' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="fs-widget">
+                        <h4>Tips & Guides</h4>
+                        <div class="fw-recent">
+                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
+                            <ul>
+                                <li>3 min read</li>
+                                <li>20 Comment</li>
+                            </ul>
+                        </div>
+                        <div class="fw-recent">
+                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
+                            <ul>
+                                <li>3 min read</li>
+                                <li>20 Comment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12 text-center">-->
+<!--                    <div class="copyright-text">-->
+<!--                        <p>&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>-->
+<!--  &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </section>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Add Package</h5>
+                      <small class="text-muted float-end">Add Package</small>
+                    </div>
+                    <div class="card-body">
+                       <form method="post" action="{% url 'addpack' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <select id="largeSelect" class="form-select form-select-lg" name="cname">
+                          <option>Select Category</option>
+                              {% for i in category %}
+                                 <option>{{i.categoryname}}</option>
+                              {% endfor %}
+                        </select>
+                        </div>
+                       <div class="mb-3">
+                          <select id="largeSelect" class="form-select form-select-lg" name="pname">
+                          <option>Package Type</option>
+                              {% for i in package %}
+                                 <option>{{i.packagename}}</option>
+                              {% endfor %}
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-email">Title Name</label>
+                          <div class="input-group input-group-merge">
+                            <input type="text" id="basic-default-email" class="form-control" placeholder="Enter Title Name" aria-label="" aria-describedby="" name="titlename">
+                          </div>
+<!--                          <div class="form-text">You can use letters, numbers &amp; periods</div>-->
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-phone"></label>
+                          <label class="form-label" for="basic-default-phone">Duration</label>
+                          <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="Duration Time" name="time">
+                        </div>
+                          <div class="mb-3">
+                          <label class="form-label" for="basic-default-phone"></label>
+                          <label class="form-label" for="basic-default-phone">Price</label>
+                          <input type="number" id="basic-default-phone" class="form-control phone-mask" placeholder="Enter Price (in RS.)" name="price">
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-message">Description</label>
+                          <textarea id="basic-default-message" class="form-control" placeholder="Description" name="description"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}', '', 'warning');
+            </script>
+        {% elif i.tags == 'error' %}
+             <script>
+                swal('{{i}}', '', 'error');
+            </script>
+        {% elif i.tags == 'success' %}
+             <script>
+                swal('{{i}}', '', 'success');
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}', '', 'info');
+             </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}
